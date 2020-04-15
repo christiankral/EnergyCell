@@ -1,1 +1,9 @@
-ImpedanceTest
+Load_Ohm
+Load_Induktiv
+Load_Capacitive
+Load_Combined
+Transformator
+Fluctuating_load
+Fluctating_load_trafo
+Generator_with_Load
+Generator_with_load_office_Wicon

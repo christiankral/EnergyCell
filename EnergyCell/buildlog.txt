@@ -1,0 +1,10 @@
+ 
+Compiling and linking the model (Visual C++). 
+ 
+dsmodel.c
+   Bibliothek "dymosim.lib" und Objekt "dymosim.exp" werden erstellt.
+LINK : warning LNK4217: Das in "___iob_func" definierte Symbol "dsmodel.obj" wird durch "libds.lib(dsres.obj)" in die Funktion "_ds_res_int_poll" importiert.
+LINK : warning LNK4286: Das in "___iob_func" definierte Symbol "dsmodel.obj" wird durch "libds.lib(amat.obj)" importiert.
+ 
+Successful generation of Dymosim. 
+ 

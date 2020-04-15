@@ -1,0 +1,5 @@
+within EnergyCell;
+model Generator
+  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+        coordinateSystem(preserveAspectRatio=false)));
+end Generator;
