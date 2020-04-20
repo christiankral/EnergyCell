@@ -25,3 +25,4 @@ autom4te.cache
 *.lo
 .dirstamp
 *.o
+*.mat
