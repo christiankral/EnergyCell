@@ -2,6 +2,7 @@ Load_Ohm
 Load_Induktiv
 Load_Capacitive
 Load_Combined
+ImpedanceTest
 Transformator
 Fluctuating_load
 Fluctating_load_trafo
