@@ -1,6 +1,6 @@
 within EnergyCell.TestingExamples;
 model Generator_with_load_office_Wicon
-  "Generator operated at a constant speed and stored data of a power measurement"
+  "Generator operated at constant speed and stored data of a power measurement"
   extends Modelica.Icons.Example;
   PowerSystems.Generic.Generator generator(f_nom=50, V_nom(displayUnit="V") = 400)
            annotation (Placement(transformation(extent={{-8,-10},{12,10}})));
