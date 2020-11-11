@@ -1,2 +1,0 @@
-# EnergyCell
-Energy cell simulations
