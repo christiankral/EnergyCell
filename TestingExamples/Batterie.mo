@@ -7,7 +7,7 @@ model Batterie
     OCVmin=2.5,
     smoothness=Modelica.Blocks.Types.Smoothness.ModifiedContinuousDerivative,
     Ri=cellData1.OCVmax/1200)
-    annotation (Placement(transformation(extent={{162,26},{182,46}})));
+    annotation (Placement(transformation(extent={{154,120},{174,140}})));
   Modelica.Electrical.Batteries.BatteryStacks.CellStack battery1(
     Ns=72,
     Np=10,
@@ -16,13 +16,9 @@ model Batterie
     SOC(fixed=true, start=0.99)) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
         rotation=270,
-        origin={142,46})));
+        origin={140,44})));
   Modelica.Electrical.Analog.Basic.Ground ground3
     annotation (Placement(transformation(extent={{112,6},{132,26}})));
-  Modelica.Electrical.Analog.Sensors.PowerSensor powerSensor1
-    annotation (Placement(transformation(extent={{112,76},{132,96}})));
-  Modelica.Blocks.Continuous.Integrator energy1(u(unit="W"), y(unit="J"))
-    annotation (Placement(transformation(extent={{160,52},{180,72}})));
   Modelica.Electrical.Analog.Basic.VariableResistor resistor_Wicon
     annotation (Placement(transformation(extent={{-52,20},{-32,40}})));
   Modelica.Electrical.Analog.Ideal.IdealTransformer transformer(n=10000/230)
@@ -36,7 +32,7 @@ model Batterie
       start=1) = 10000)
     annotation (Placement(transformation(extent={{-90,-38},{-110,-18}})));
   Modelica.Electrical.Analog.Sources.SignalCurrent signalCurrent
-    annotation (Placement(transformation(extent={{-32,-6},{-52,14}})));
+    annotation (Placement(transformation(extent={{-32,2},{-52,22}})));
   Modelica.Blocks.Math.Gain gain2(k=1)
     annotation (Placement(transformation(extent={{10,10},{-10,-10}},
         rotation=180,
@@ -16735,26 +16731,56 @@ model Batterie
       Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
-        origin={-52,-12})));
+        origin={-52,-4})));
   Modelica.Electrical.Analog.Sources.SignalCurrent signalCurrent1
     annotation (Placement(transformation(extent={{10,-10},{-10,10}},
         rotation=90,
         origin={94,60})));
+  Modelica.Blocks.Logical.Switch switch1
+    annotation (Placement(transformation(extent={{40,100},{60,120}})));
+  Modelica.Blocks.Sources.Constant const1(k=0)
+    annotation (Placement(transformation(extent={{10,-10},{-10,10}},
+        rotation=180,
+        origin={-30,90})));
+  Modelica.Blocks.Logical.LessEqual lessEqual
+    annotation (Placement(transformation(extent={{200,-40},{220,-20}})));
+  Modelica.Blocks.Logical.GreaterEqual greaterEqual
+    annotation (Placement(transformation(extent={{200,0},{220,20}})));
+  Modelica.Electrical.Analog.Sensors.CurrentSensor currentSensor1
+    annotation (Placement(transformation(extent={{102,70},{122,90}})));
+  Modelica.Electrical.Analog.Sensors.VoltageSensor voltageSensor annotation (
+      Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=270,
+        origin={188,44})));
+  Modelica.Blocks.Sources.Constant const3(k=4.1)
+    annotation (Placement(transformation(extent={{10,-10},{-10,10}},
+        rotation=180,
+        origin={150,2})));
+  Modelica.Blocks.Sources.Constant const4(k=2.6)
+    annotation (Placement(transformation(extent={{10,-10},{-10,10}},
+        rotation=180,
+        origin={150,-38})));
+  Modelica.Blocks.Logical.And and1
+    annotation (Placement(transformation(extent={{256,-60},{276,-40}})));
+  Modelica.Blocks.Sources.Constant const5(k=0)
+    annotation (Placement(transformation(extent={{10,10},{-10,-10}},
+        rotation=180,
+        origin={148,-108})));
+  Modelica.Blocks.Logical.And and2
+    annotation (Placement(transformation(extent={{362,14},{382,34}})));
+  Modelica.Blocks.Logical.Greater greater
+    annotation (Placement(transformation(extent={{202,-100},{222,-80}})));
+  Modelica.Blocks.Logical.Less less
+    annotation (Placement(transformation(extent={{332,-12},{352,8}})));
+  Modelica.Blocks.Sources.Constant const6(k=0)
+    annotation (Placement(transformation(extent={{10,10},{-10,-10}},
+        rotation=180,
+        origin={306,-24})));
 equation
   connect(battery1.n,ground3. p)
-    annotation (Line(points={{142,36},{142,26},{122,26}},
+    annotation (Line(points={{140,34},{140,26},{122,26}},
                                                        color={0,0,255}));
-  connect(powerSensor1.nv,ground3. p)
-    annotation (Line(points={{122,76},{122,26}},
-                                               color={0,0,255}));
-  connect(powerSensor1.pc,powerSensor1. pv)
-    annotation (Line(points={{112,86},{112,96},{122,96}},
-                                                       color={0,0,255}));
-  connect(powerSensor1.power,energy1. u)
-    annotation (Line(points={{112,75},{112,62},{158,62}},
-                                                       color={0,0,127}));
-  connect(battery1.p,powerSensor1. nc) annotation (Line(points={{142,56},{142,
-          86},{132,86}},   color={0,0,255}));
   connect(transformer.n1,ground1. p)
     annotation (Line(points={{-72,-48},{-72,-68}},   color={0,0,255}));
   connect(transformer.n2,ground2. p)
@@ -16765,11 +16791,11 @@ equation
   connect(constantVoltage.n,transformer. n1) annotation (Line(points={{-110,-28},
           {-110,-48},{-72,-48}},  color={0,0,255}));
   connect(signalCurrent.n, resistor_Wicon.p)
-    annotation (Line(points={{-52,4},{-52,30}}, color={0,0,255}));
+    annotation (Line(points={{-52,12},{-52,30}},color={0,0,255}));
   connect(resistor_Wicon.n, signalCurrent.p)
-    annotation (Line(points={{-32,30},{-32,4}}, color={0,0,255}));
+    annotation (Line(points={{-32,30},{-32,12}},color={0,0,255}));
   connect(transformer.n2, signalCurrent.p)
-    annotation (Line(points={{-52,-48},{-32,-48},{-32,4}}, color={0,0,255}));
+    annotation (Line(points={{-52,-48},{-32,-48},{-32,12}},color={0,0,255}));
   connect(product.y,division2. u1) annotation (Line(points={{-141,40},{-111,40},
           {-111,68},{-88,68}},
                         color={0,0,127}));
@@ -16795,17 +16821,59 @@ equation
     annotation (Line(points={{107,-4},{84,-4}},
                                              color={0,0,127}));
   connect(division.y, signalCurrent.i) annotation (Line(points={{25,18},{-8.5,
-          18},{-8.5,16},{-42,16}}, color={0,0,127}));
+          18},{-8.5,24},{-42,24}}, color={0,0,127}));
   connect(transformer.p2, currentSensor.p)
-    annotation (Line(points={{-52,-28},{-52,-22}}, color={0,0,255}));
+    annotation (Line(points={{-52,-28},{-52,-14}}, color={0,0,255}));
   connect(currentSensor.n, signalCurrent.n)
-    annotation (Line(points={{-52,-2},{-52,4}}, color={0,0,255}));
-  connect(ground3.p, signalCurrent1.n) annotation (Line(points={{122,26},{108,
-          26},{108,50},{94,50}}, color={0,0,255}));
-  connect(signalCurrent1.p, powerSensor1.pc) annotation (Line(points={{94,70},{
-          104,70},{104,86},{112,86}}, color={0,0,255}));
-  connect(currentSensor.i, signalCurrent1.i) annotation (Line(points={{-41,-12},
-          {20.5,-12},{20.5,60},{82,60}}, color={0,0,127}));
+    annotation (Line(points={{-52,6},{-52,12}}, color={0,0,255}));
+  connect(ground3.p, signalCurrent1.n) annotation (Line(points={{122,26},{94,26},
+          {94,50}},              color={0,0,255}));
+  connect(currentSensor.i, switch1.u1) annotation (Line(points={{-41,-4},{-2,-4},
+          {-2,118},{38,118}}, color={0,0,127}));
+  connect(switch1.y, signalCurrent1.i) annotation (Line(points={{61,110},{72,
+          110},{72,60},{82,60}}, color={0,0,127}));
+  connect(const1.y, switch1.u3) annotation (Line(points={{-19,90},{32,90},{32,
+          102},{38,102}}, color={0,0,127}));
+  connect(signalCurrent1.p, currentSensor1.p)
+    annotation (Line(points={{94,70},{94,80},{102,80}}, color={0,0,255}));
+  connect(voltageSensor.p, battery1.p)
+    annotation (Line(points={{188,54},{140,54}}, color={0,0,255}));
+  connect(voltageSensor.n, battery1.n)
+    annotation (Line(points={{188,34},{140,34}}, color={0,0,255}));
+  connect(currentSensor1.n, battery1.p)
+    annotation (Line(points={{122,80},{140,80},{140,54}}, color={0,0,255}));
+  connect(voltageSensor.v, greaterEqual.u1) annotation (Line(points={{177,44},{
+          168,44},{168,10},{198,10}}, color={0,0,127}));
+  connect(voltageSensor.v, lessEqual.u1) annotation (Line(points={{177,44},{168,
+          44},{168,-30},{198,-30}}, color={0,0,127}));
+  connect(const3.y, greaterEqual.u2)
+    annotation (Line(points={{161,2},{198,2}}, color={0,0,127}));
+  connect(const4.y, lessEqual.u2)
+    annotation (Line(points={{161,-38},{198,-38}}, color={0,0,127}));
+  connect(lessEqual.y, and1.u1) annotation (Line(points={{221,-30},{238,-30},{
+          238,-50},{254,-50}}, color={255,0,255}));
+  connect(and1.y, switch1.u2) annotation (Line(points={{277,-50},{498,-50},{498,
+          110},{38,110}}, color={255,0,255}));
+  connect(greaterEqual.y, and2.u1) annotation (Line(points={{221,10},{310,10},{
+          310,24},{360,24}}, color={255,0,255}));
+  connect(const5.y, greater.u2) annotation (Line(points={{159,-108},{180,-108},
+          {180,-98},{200,-98}}, color={0,0,127}));
+  connect(currentSensor.i, greater.u1) annotation (Line(points={{-41,-4},{-2,-4},
+          {-2,-90},{200,-90}}, color={0,0,127}));
+  connect(greater.y, and1.u2) annotation (Line(points={{223,-90},{238,-90},{238,
+          -58},{254,-58}}, color={255,0,255}));
+  connect(less.y, and2.u2) annotation (Line(points={{353,-2},{358,-2},{358,16},
+          {360,16}}, color={255,0,255}));
+  connect(and2.y, switch1.u2) annotation (Line(points={{383,24},{392,24},{392,
+          110},{38,110}}, color={255,0,255}));
+  connect(const6.y, less.u2) annotation (Line(points={{317,-24},{320,-24},{320,
+          -10},{330,-10}}, color={0,0,127}));
+  connect(less.u1, greater.u1) annotation (Line(points={{330,-2},{288,-2},{288,
+          -126},{-2,-126},{-2,-90},{200,-90}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
-        coordinateSystem(preserveAspectRatio=false)));
+        coordinateSystem(preserveAspectRatio=false)),
+    experiment(
+      StopTime=31536000,
+      __Dymola_NumberOfIntervals=1000000,
+      __Dymola_Algorithm="Dassl"));
 end Batterie;
