@@ -16695,7 +16695,7 @@ extends Modelica.Icons.Example;
     startTime=0)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=180,
-        origin={110,170})));
+        origin={112,170})));
   Modelica.Blocks.Math.Gain gain1(k=1)
     annotation (Placement(transformation(extent={{-10,10},{10,-10}},
         rotation=180,
@@ -16758,7 +16758,7 @@ equation
   connect(division1.y, Wicon_Load.R)
     annotation (Line(points={{13,134},{-20,134}}, color={0,0,127}));
   connect(Wicon_Data.y[1], gain1.u)
-    annotation (Line(points={{99,170},{82,170}}, color={0,0,127}));
+    annotation (Line(points={{101,170},{82,170}},color={0,0,127}));
   connect(division.y, PV_Berndorf.i) annotation (Line(points={{11,100},{6,100},{
           6,112},{-20,112}}, color={0,0,127}));
   annotation (

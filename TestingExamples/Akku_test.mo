@@ -32,8 +32,8 @@ model Akku_test
         origin={90,20})));
   Modelica.Blocks.Logical.LessEqualThreshold lessEqualThreshold(threshold=4.2)
     annotation (Placement(transformation(extent={{140,40},{160,60}})));
-  Modelica.Blocks.Logical.GreaterEqualThreshold greaterEqualThreshold(threshold
-      =2.5) annotation (Placement(transformation(extent={{140,0},{160,20}})));
+  Modelica.Blocks.Logical.GreaterEqualThreshold greaterEqualThreshold(threshold=
+       2.5) annotation (Placement(transformation(extent={{140,0},{160,20}})));
   Modelica.Blocks.Sources.Constant const2(k=10)
     annotation (Placement(transformation(extent={{-100,10},{-80,30}})));
   Modelica.Blocks.Logical.And and1
