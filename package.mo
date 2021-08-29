@@ -1,6 +1,6 @@
 within ;
 package EnergyCell
-  import Modelica.Unites.SI;
+  import Modelica.Units.SI;
 
 annotation (uses(
       Modelica(version="4.0.0")),
