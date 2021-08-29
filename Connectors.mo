@@ -23,16 +23,16 @@ package Connectors "pins for the Energycell"
             fillPattern=FillPattern.Solid)}));
   end Negative_Pin;
 
-  partial model MainConnector "Connectors for consumers and producers"
+  partial model TwoPins "Two connectors for interconnecting components"
     SI.ComplexVoltage V;
     SI.ComplexCurrent I;
 
     Positive_Pin p
-      annotation (Placement(transformation(extent={{-10,-8},{10,12}}),
-          iconTransformation(extent={{-10,-8},{10,12}})));
+      annotation (Placement(transformation(extent={{-110,-10},{-90,10}}),
+          iconTransformation(extent={{-110,-10},{-90,10}})));
     Negative_Pin n
-      annotation (Placement(transformation(extent={{-10,-8},{10,12}}),
-          iconTransformation(extent={{-10,-8},{10,12}})));
+      annotation (Placement(transformation(extent={{90,-10},{110,10}}),
+          iconTransformation(extent={{90,-10},{110,10}})));
 
   equation
    p.V - n.V = V;
@@ -42,6 +42,23 @@ package Connectors "pins for the Energycell"
     annotation (Icon(coordinateSystem(preserveAspectRatio=false)),
                                               Diagram(coordinateSystem(
             preserveAspectRatio=false)));
-  end MainConnector;
+  end TwoPins;
+
+  partial model OnePin "One connectors for modeling loads and sources"
+    SI.ComplexVoltage V;
+    SI.ComplexCurrent I;
+
+    Positive_Pin p
+      annotation (Placement(transformation(extent={{-110,-10},{-90,10}}),
+          iconTransformation(extent={{-110,-10},{-90,10}})));
+
+  equation
+   p.V = V;
+   p.I = I;
+
+    annotation (Icon(coordinateSystem(preserveAspectRatio=false)),
+                                              Diagram(coordinateSystem(
+            preserveAspectRatio=false)));
+  end OnePin;
   annotation ();
 end Connectors;
