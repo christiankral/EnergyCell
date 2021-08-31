@@ -51,11 +51,11 @@ package Connectors "pins for the Energycell"
   end TwoPins;
 
   partial model OnePin "One connectors for modeling loads and sources"
-    SI.ComplexVoltage V;
-    SI.ComplexCurrent I;
-    SI.ActivePower P;
-    SI.ApparentPower S;
-    SI.ReactivePower Q;
+    SI.ComplexVoltage V "Complex phase to neutral voltage";
+    SI.ComplexCurrent I "Complex line current";
+    SI.ActivePower P "Active power";
+    SI.ComplexPower S "Complex apparent power";
+    SI.ReactivePower Q "Reactive power";
 
     Positive_Pin p
       annotation (Placement(transformation(extent={{-110,-10},{-90,10}}),
@@ -64,6 +64,8 @@ package Connectors "pins for the Energycell"
   equation
    p.V = V;
    p.I = I;
+   S = Complex( P, Q);
+   S = 3 * V * conj( I);
 
     annotation (Icon(coordinateSystem(preserveAspectRatio=false)),
                                               Diagram(coordinateSystem(
