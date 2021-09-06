@@ -56,7 +56,7 @@ package Connectors "pins for the Energycell"
     SI.ActivePower P "Active power";
     SI.ComplexPower S "Complex apparent power";
     SI.ReactivePower Q "Reactive power";
-
+    SI.ComplexImpedance Z;
     Positive_Pin p
       annotation (Placement(transformation(extent={{-110,-10},{-90,10}}),
           iconTransformation(extent={{-110,-10},{-90,10}})));
