@@ -1,15 +1,10 @@
 within EnergyCell;
 package Voltage_source
   model One_Phase
-
     extends EnergyCell.Connectors.OnePin;
-
-    SI.ComplexVoltage V;
-    parameter SI.ComplexVoltage U = Complex( 230, 0);
-
+    parameter SI.ComplexVoltage V_phase = Complex(230, 0) "Complex line to phase voltage";
   equation
-    V = U;
-
+    V = V_phase;
     annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
             Rectangle(
             extent={{-80,60},{80,-60}},
