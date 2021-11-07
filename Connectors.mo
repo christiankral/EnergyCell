@@ -27,7 +27,7 @@ package Connectors "pins for the Energycell"
     SI.ComplexVoltage V;
     SI.ComplexCurrent I;
     SI.ActivePower P;
-    SI.ApparentPower S;
+    SI.ComplexPower S;
     SI.ReactivePower Q;
     Positive_Pin p
       annotation (Placement(transformation(extent={{-110,-10},{-90,10}}),
