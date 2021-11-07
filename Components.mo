@@ -11,4 +11,27 @@ package Components "Building blocks for the energy cell"
               color={28,108,200})}), Diagram(coordinateSystem(preserveAspectRatio=
              false)));
   end Impedance;
+
+  model Line_Impedance
+      parameter SI.ComplexImpedance Z = Complex( 5, 0);
+    extends EnergyCell.Connectors.TwoPins;
+  equation
+     V = Z * I;
+     I = Y * V;
+    annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+          coordinateSystem(preserveAspectRatio=false)));
+  end Line_Impedance;
+
+  model Last
+    parameter SI.ComplexAdmittance Y = Complex( 1, 0);
+
+    extends EnergyCell.Connectors.OnePin;
+
+  equation
+     Y = P / V^2;
+
+
+    annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+          coordinateSystem(preserveAspectRatio=false)));
+  end Last;
 end Components;
