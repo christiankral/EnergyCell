@@ -38,7 +38,10 @@ package Connectors "pins for the Energycell"
   equation
    p.V - n.V = V;
    p.I + n.I = Complex(0, 0);
+   S = Complex( P, Q);
+   S = 3 * V * conj( I);
    p.I = I;
+   p.V = V;
     annotation (Icon(coordinateSystem(preserveAspectRatio=false)),
                                               Diagram(coordinateSystem(
             preserveAspectRatio=false)));
