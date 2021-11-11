@@ -41,8 +41,7 @@ package Connectors "pins for the Energycell"
    S = Complex( P, Q);
    S = 3 * V * conj( I);
    p.I = I;
-   p.V = V;
-    annotation (Icon(coordinateSystem(preserveAspectRatio=false)),
+   annotation (Icon(coordinateSystem(preserveAspectRatio=false)),
                                               Diagram(coordinateSystem(
             preserveAspectRatio=false)));
   end TwoPins;
