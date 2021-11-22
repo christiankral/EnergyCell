@@ -102,7 +102,7 @@ int settings(13,1)
 
 
 #    Names of initial variables
-char initialName(12,20)
+char initialName(14,20)
 _dummy
 _derdummy
 one_Phase.I.re
@@ -111,24 +111,28 @@ one_Phase.P
 one_Phase.S.im
 one_Phase.V_phase.re
 one_Phase.V_phase.im
-impedance.Z.re
-impedance.Z.im
-impedance.P
-impedance.S.im
+last.Y.re
+last.Y.im
+last.P
+last.S.re
+last.S.im
+last.Q
 
-double initialValue(12,6)
- -2      1  0  0  2    0   # _dummy
- -2      0  0  0  3    0   # _derdummy
- -2    -46  0  0  6  256   # one_Phase.I.re
- -2      0  0  0  6  256   # one_Phase.I.im
- -2 -31740  0  0  6  256   # one_Phase.P
- -2      0  0  0  6  256   # one_Phase.S.im
- -1    230  0  0  1  280   # one_Phase.V_phase.re
- -1      0  0  0  1  280   # one_Phase.V_phase.im
- -1      5  0  0  1  280   # impedance.Z.re
- -1      0  0  0  1  280   # impedance.Z.im
- -2  31740  0  0  6  256   # impedance.P
- -2      0  0  0  6  256   # impedance.S.im
+double initialValue(14,6)
+ -2       1                  0  0  2    0   # _dummy
+ -2       0                  0  0  3    0   # _derdummy
+ -2 -1.4492753623188406E-01  0  0  6  256   # one_Phase.I.re
+ -2       0                  0  0  6  256   # one_Phase.I.im
+ -2    -100                  0  0  6  256   # one_Phase.P
+ -2       0                  0  0  6  256   # one_Phase.S.im
+ -1     230                  0  0  1  280   # one_Phase.V_phase.re
+ -1       0                  0  0  1  280   # one_Phase.V_phase.im
+ -1       5                  0  0  1  280   # last.Y.re
+ -1       0                  0  0  1  280   # last.Y.im
+ -2     100                  0  0  6  256   # last.P
+ -2     100                  0  0  6  256   # last.S.re
+ -2       0                  0  0  6  256   # last.S.im
+ -2       0                  0  0  6  256   # last.Q
 
 
 # Matrix with 6 columns defining the initial value calculation
@@ -179,7 +183,7 @@ double initialValue(12,6)
 #   nominal value (and maybe minimum and maximum values given in 
 #   column 3 and 4). If these values are zero, scale(i)=1 is used).
 #
-char initialDescription(12,63)
+char initialDescription(14,63)
 dummy
 derdummy
 Real part of complex current [A]
@@ -188,8 +192,10 @@ Active power [W]
 Imaginary part of complex apparent power (reactive power) [var]
 Imaginary part of complex voltage [V]
 Real part of complex voltage [V]
-Real part of complex impedance (resistance) [Ohm]
-Imaginary part of complex impedance (reactance) [Ohm]
+Real part of complex admittance (conductance) [S]
+Imaginary part of complex admittance (susceptance) [S]
 Active power [W]
+Real part of complex apparent power (active power) [W]
 Imaginary part of complex apparent power (reactive power) [var]
+Reactive power [var]
 
