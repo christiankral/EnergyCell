@@ -1,6 +1,6 @@
 within EnergyCell;
 package Voltage_source
-  model One_Phase
+  model One_Phase "fix Voltage Source"
     extends EnergyCell.Connectors.OnePin;
     parameter SI.ComplexVoltage V_ref = Complex(230, 0) "Complex line to phase voltage";
   equation
