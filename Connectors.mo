@@ -9,7 +9,7 @@ package Connectors "pins for the Energycell"
     extends Pin;
     annotation (Icon(graphics={Rectangle(
             extent={{-80,80},{80,-80}},
-            lineColor={0,0,255},
+            lineColor={0,0,0},
             fillColor={238,46,47},
             fillPattern=FillPattern.Solid)}));
   end Positive_Pin;
@@ -18,7 +18,7 @@ package Connectors "pins for the Energycell"
     extends Pin;
     annotation (Icon(graphics={Rectangle(
             extent={{-80,80},{80,-80}},
-            lineColor={0,0,255},
+            lineColor={0,0,0},
             fillColor={28,108,200},
             fillPattern=FillPattern.Solid)}));
   end Negative_Pin;
@@ -34,14 +34,13 @@ package Connectors "pins for the Energycell"
           iconTransformation(extent={{-124,-24},{-76,24}})));
     Negative_Pin n
       annotation (Placement(transformation(extent={{76,-24},{124,24}}),
-          iconTransformation(extent={{74,-26},{122,22}})));
+          iconTransformation(extent={{76,-24},{124,24}})));
   equation
    p.V - n.V = V "definition of potential Voltage diffrent";
    p.I + n.I = Complex(0, 0) "definition or current (Sum of currents is 0)";
    S = Complex( P, Q) "describe the apparent power by active Power and reactive Power";
    S = 3 * V * conj( I) "definition of apparent Power consisting of complex Voltage and complex Current";
    p.I = I "definition of complex Current";
-    connect(n, n) annotation (Line(points={{100,0},{100,0}}, color={0,0,255}));
    annotation (Icon(coordinateSystem(preserveAspectRatio=false)),
                                               Diagram(coordinateSystem(
             preserveAspectRatio=false)));
@@ -61,8 +60,6 @@ package Connectors "pins for the Energycell"
    p.I = I "definition of complex Current";
    S = Complex( P, Q) "describe the apparent power by active Power and reactive Power";
    S = 3 * V * conj( I) "definition of apparent Power consisting of complex Voltage and complex Current";
-    connect(p, p)
-      annotation (Line(points={{-100,0},{-100,0}}, color={0,0,255}));
     annotation (Icon(coordinateSystem(preserveAspectRatio=false)),
                                               Diagram(coordinateSystem(
             preserveAspectRatio=false)));
