@@ -3,11 +3,11 @@ package Test_Library
   model Test
     Voltage_source.One_Phase one_Phase
       annotation (Placement(transformation(extent={{18,-10},{38,10}})));
-    Components.Load last
-      annotation (Placement(transformation(extent={{-36,-10},{-56,10}})));
+    Source_over_time.PV_Berndorf pV_Berndorf
+      annotation (Placement(transformation(extent={{-26,-10},{-48,10}})));
   equation
-    connect(last.p, one_Phase.p)
-      annotation (Line(points={{-36,0},{18,0}}, color={0,0,255}));
+    connect(pV_Berndorf.p, one_Phase.p)
+      annotation (Line(points={{-26,0},{18,0}}, color={0,0,0}));
     annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
           coordinateSystem(preserveAspectRatio=false)));
   end Test;
@@ -17,12 +17,12 @@ package Test_Library
       annotation (Placement(transformation(extent={{40,-16},{74,16}})));
     Loads_over_time.Office office
       annotation (Placement(transformation(extent={{-20,-10},{-40,10}})));
-    Measurement.Powermeter powermeter
+    Measurement.Voltmeter voltmeter
       annotation (Placement(transformation(extent={{-2,-10},{18,10}})));
   equation
-    connect(powermeter.n, one_Phase.p)
+    connect(voltmeter.n, one_Phase.p)
       annotation (Line(points={{18,0},{40,0}}, color={0,0,0}));
-    connect(powermeter.p, office.p)
+    connect(voltmeter.p, office.p)
       annotation (Line(points={{-2,0},{-20,0}}, color={0,0,0}));
     annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
           coordinateSystem(preserveAspectRatio=false)),

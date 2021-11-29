@@ -23,11 +23,17 @@ package Components "Building blocks for the energy cell"
   end Impedance;
 
   model Line_Impedance "complex Impedance with two Pins"
+      SI.Resistance R;
       parameter SI.ComplexImpedance Z = Complex( 0, 0) "assign a parameter for complex Impedance";
+      parameter Real l = 1 "Length of the line";
+      parameter Real A = 16 "Cable cross section of the line";
+  final parameter Real Roh = 0.017;
+
 
       extends EnergyCell.Connectors.TwoPins;
   equation
      V = Z * I "definition of complex impedance using complex Voltage and complex Current";
+    (Roh*l) / A = R;
 
     annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
           Line(points={{-60,0},{-92,0}}, color={0,0,0}),
