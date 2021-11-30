@@ -1,11 +1,12 @@
 within EnergyCell;
 package Connectors "pins for the Energycell"
-  connector Pin "pins for the power cell"
-    SI.ComplexElectricPotential V "import complex Voltage for Pin";
-    flow SI.ComplexCurrent I "import complex Current for Pin";
+  connector Pin "Pins for the power cell"
+    SI.ComplexElectricPotential V "Import complex Voltage for Pin";
+    flow SI.ComplexCurrent I "Import complex Current for Pin";
   end Pin;
 
-  connector Positive_Pin "positiv Pin for Library"
+  connector Positive_Pin "Positiv Pin for Library"
+    //Inheritance of the source code from Pin
     extends Pin;
     annotation (Icon(graphics={Rectangle(
             extent={{-80,80},{80,-80}},
@@ -14,7 +15,8 @@ package Connectors "pins for the Energycell"
             fillPattern=FillPattern.Solid)}));
   end Positive_Pin;
 
-  connector Negative_Pin "negative Pin for Library"
+  connector Negative_Pin "Negative Pin for Library"
+    //Inheritance of the source code from Pin
     extends Pin;
     annotation (Icon(graphics={Rectangle(
             extent={{-80,80},{80,-80}},
@@ -24,11 +26,11 @@ package Connectors "pins for the Energycell"
   end Negative_Pin;
 
   partial model TwoPins "Two connectors for interconnecting components"
-    SI.ComplexVoltage V "deposit complex Voltage for TwoPins Connector";
-    SI.ComplexCurrent I "deposit complex Current for TwoPins Connector";
-    SI.ActivePower P "deposit active Power for TwoPins Connector";
-    SI.ComplexPower S "deposit apparent Power for TwoPins Connector";
-    SI.ReactivePower Q "deposit reactive Power for TwoPins Connector";
+    SI.ComplexVoltage V "Deposit complex Voltage for TwoPins Connector";
+    SI.ComplexCurrent I "Deposit complex Current for TwoPins Connector";
+    SI.ActivePower P "Deposit active Power for TwoPins Connector";
+    SI.ComplexPower S "Deposit apparent Power for TwoPins Connector";
+    SI.ReactivePower Q "Deposit reactive Power for TwoPins Connector";
     Positive_Pin p
       annotation (Placement(transformation(extent={{-124,-24},{-76,24}}),
           iconTransformation(extent={{-124,-24},{-76,24}})));
@@ -36,11 +38,11 @@ package Connectors "pins for the Energycell"
       annotation (Placement(transformation(extent={{76,-24},{124,24}}),
           iconTransformation(extent={{76,-24},{124,24}})));
   equation
-   p.V - n.V = V "definition of potential Voltage diffrent";
-   p.I + n.I = Complex(0, 0) "definition or current (Sum of currents is 0)";
-   S = Complex( P, Q) "describe the apparent power by active Power and reactive Power";
-   S = 3 * V * conj( I) "definition of apparent Power consisting of complex Voltage and complex Current";
-   p.I = I "definition of complex Current";
+   p.V - n.V = V "Definition of potential Voltage diffrent";
+   p.I + n.I = Complex(0, 0) "Definition or current (Sum of currents is 0)";
+   S = Complex( P, Q) "Describe the apparent power by active Power and reactive Power";
+   S = 3 * V * conj( I) "Definition of apparent Power consisting of complex Voltage and complex Current";
+   p.I = I "Definition of complex Current";
    annotation (Icon(coordinateSystem(preserveAspectRatio=false)),
                                               Diagram(coordinateSystem(
             preserveAspectRatio=false)));
@@ -56,10 +58,10 @@ package Connectors "pins for the Energycell"
       annotation (Placement(transformation(extent={{-124,-24},{-76,24}}),
           iconTransformation(extent={{-124,-24},{-76,24}})));
   equation
-   p.V = V "definition of potential Voltage diffrent";
-   p.I = I "definition of complex Current";
-   S = Complex( P, Q) "describe the apparent power by active Power and reactive Power";
-   S = 3 * V * conj( I) "definition of apparent Power consisting of complex Voltage and complex Current";
+   p.V = V "Definition of potential Voltage diffrent";
+   p.I = I "Definition of complex Current";
+   S = Complex( P, Q) "Describe the apparent power by active Power and reactive Power";
+   S = 3 * V * conj( I) "Definition of apparent Power consisting of complex Voltage and complex Current";
     annotation (Icon(coordinateSystem(preserveAspectRatio=false)),
                                               Diagram(coordinateSystem(
             preserveAspectRatio=false)));

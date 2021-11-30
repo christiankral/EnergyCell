@@ -1,10 +1,13 @@
 within EnergyCell;
 package Components "Building blocks for the energy cell"
-  model Impedance "complex Impedance with one Pin"
-    parameter SI.ComplexImpedance Z = Complex( 5, 0) "assign a parameter for complex Impedance";
+  model Impedance "Complex Impedance with one Pin"
+    parameter SI.ComplexImpedance Z = Complex( 5, 0) "Assign a parameter for complex Impedance";
+
+    //Inheritance of the source code from OnePin
     extends EnergyCell.Connectors.OnePin;
+
   equation
-     V = Z * I "definition of complex impedance using complex Voltage and complex Current";
+     V = Z * I "Definition of complex impedance using complex Voltage and complex Current";
     annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
             Rectangle(extent={{-40,30},{100,-30}},  lineColor={0,0,0}),
           Line(points={{-40,0},{-82,0}}, color={0,0,0}),
@@ -27,10 +30,11 @@ package Components "Building blocks for the energy cell"
       parameter SI.ComplexImpedance Z = Complex( 0, 0) "assign a parameter for complex Impedance";
       parameter Real l = 1 "Length of the line";
       parameter Real A = 16 "Cable cross section of the line";
-  final parameter Real Roh = 0.017;
+      final parameter Real Roh = 0.017;
 
+  //Inheritance of the source code from TwoPins
+  extends EnergyCell.Connectors.TwoPins;
 
-      extends EnergyCell.Connectors.TwoPins;
   equation
      V = Z * I "definition of complex impedance using complex Voltage and complex Current";
     (Roh*l) / A = R;
@@ -48,15 +52,16 @@ package Components "Building blocks for the energy cell"
           coordinateSystem(preserveAspectRatio=false)));
   end Line_Impedance;
 
-  model Load
+  model Load "Model for simulating active power load"
     final parameter SI.ComplexAdmittance Y = Complex(G, B);
-    parameter SI.ActivePower P_ref_threephase = 100 " set activ power to 100 for 100W of effective Power 3 Phase";
-    parameter SI.ActivePower P_ref = P_ref_threephase/3;
-    parameter SI.ReactivePower Q_ref = 0 "set reactive Power to 0 for a load using only effective Power";
+    parameter SI.ActivePower P_ref_threephase = 100 " Set activ power to 100 for 100W of effective Power 3 Phase";
+    parameter SI.ActivePower P_ref = P_ref_threephase/3 "Consideration of factor three for 1 phase in the power grid";
+    parameter SI.ReactivePower Q_ref = 0 "Set reactive Power to 0 for a load using only effective Power";
     parameter SI.Voltage V_ref = 230 "Voltage between one Phase and neutral conductor";
-    final parameter SI.Conductance G = P_ref_threephase / V_ref^2 "fixed definition of electrical Conductance";
-    final parameter SI.Susceptance B = Q_ref / V_ref^2 "fixed definition of electrical Susceptance";
+    final parameter SI.Conductance G = P_ref_threephase / V_ref^2 "Fixed definition of electrical Conductance";
+    final parameter SI.Susceptance B = Q_ref / V_ref^2 "Fixed definition of electrical Susceptance";
 
+    //Inheritance of the source code from OnePin
     extends EnergyCell.Connectors.OnePin;
 
   equation

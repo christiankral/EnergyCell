@@ -1,8 +1,12 @@
 within EnergyCell;
 package Voltage_source
   model One_Phase "fix Voltage Source"
-    extends EnergyCell.Connectors.OnePin;
+
     parameter SI.ComplexVoltage V_ref = Complex(230, 0) "Complex line to phase voltage";
+
+    //Inheritance of the source code from Pin
+    extends EnergyCell.Connectors.OnePin;
+
   equation
     V = V_ref;
     annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-120},
