@@ -1,4 +1,4 @@
-within EnergyCell;
+﻿within EnergyCell;
 package Components "Building blocks for the energy cell"
   model Impedance "Complex Impedance with one Pin"
     parameter SI.ComplexImpedance Z = Complex( 5, 0) "Assign a parameter for complex Impedance";
@@ -26,18 +26,21 @@ package Components "Building blocks for the energy cell"
   end Impedance;
 
   model Line_Impedance "complex Impedance with two Pins"
-      SI.Resistance R;
-      parameter SI.ComplexImpedance Z = Complex( 0, 0) "assign a parameter for complex Impedance";
-      parameter Real l = 1 "Length of the line";
-      parameter Real A = 16 "Cable cross section of the line";
-      final parameter Real Roh = 0.017;
+      parameter SI.Length  l "Leangth of Cable";
+      parameter SI.CrossSection A "Cable cross section of the line";
+      final parameter Real roh( quantity="electrical resistance", unit="Ohm*mm²/m") = 0.0178;
+      final parameter SI.Resistance R = (roh*l) / A "";
+      parameter SI.ComplexImpedance Z = Complex( R, 0) "assign a parameter for complex Impedance";
+
 
   //Inheritance of the source code from TwoPins
   extends EnergyCell.Connectors.TwoPins;
 
   equation
+           // Time-dependent equations
+
      V = Z * I "definition of complex impedance using complex Voltage and complex Current";
-    (Roh*l) / A = R;
+
 
     annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
           Line(points={{-60,0},{-92,0}}, color={0,0,0}),
@@ -66,7 +69,7 @@ package Components "Building blocks for the energy cell"
 
   equation
 
-    I = Y * V "definition of complex Admittance using complex Voltage and complex Current";
+    I = Y * V "Definition of complex Admittance using complex Voltage and complex Current";
 
 
     annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={

@@ -19,6 +19,8 @@ package Test_Library
       annotation (Placement(transformation(extent={{-20,-10},{-40,10}})));
     Measurement.Voltmeter voltmeter
       annotation (Placement(transformation(extent={{-2,-10},{18,10}})));
+    Components.Line_Impedance line_Impedance
+      annotation (Placement(transformation(extent={{-26,-50},{-6,-30}})));
   equation
     connect(voltmeter.n, one_Phase.p)
       annotation (Line(points={{18,0},{40,0}}, color={0,0,0}));

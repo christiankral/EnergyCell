@@ -1,13 +1,14 @@
 within EnergyCell;
 package Interfaces
-  model Variable_load " interface for diffrent timetable"
+  model Variable_load "Interface for diffrent timetable"
 
-  parameter Real k(start=1) "k stands for the kWh consumption per year";
-    SI.ComplexAdmittance Y = Complex(G, 0);
-    SI.ActivePower P_ref = gain.y;
-    parameter SI.Voltage V_ref = 230;
-    SI.Conductance G = P_ref / V_ref^2;
+    SI.ActivePower P_ref = gain.y "Adopting the values from table for active Power";
+    SI.ComplexAdmittance Y = Complex(G, 0) "Definition of admittance ";
+    SI.Conductance G = P_ref / V_ref^2 "Definition of Conductance";
+    parameter Real k(start=1) "For kWh consumption per year, start value set to 1";
+    parameter SI.Voltage V_ref = 230 "Parameters for the voltage";
 
+  //Inheritance of the source code from OnePin
   extends EnergyCell.Connectors.OnePin;
 
     Modelica.Blocks.Math.Gain gain(k=k) annotation (Placement(transformation(

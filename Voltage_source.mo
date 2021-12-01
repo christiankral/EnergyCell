@@ -8,7 +8,7 @@ package Voltage_source
     extends EnergyCell.Connectors.OnePin;
 
   equation
-    V = V_ref;
+    V = V_ref "Parameter for the voltage";
     annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-120},
               {140,120}}), graphics={
           Ellipse(

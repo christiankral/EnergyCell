@@ -7,6 +7,8 @@ package Measurement
 
   extends EnergyCell.Connectors.TwoPins;
 
+    Modelica.Blocks.Interfaces.RealOutput Output_Power
+      annotation (Placement(transformation(extent={{80,22},{158,100}})));
   equation
 
   S = Complex( P, Q);
@@ -63,19 +65,21 @@ package Measurement
           Line(
             points={{60,0},{82,0}},
             color={0,0,0},
-            thickness=0.5)}));
+            thickness=0.5),
+          Line(points={{80,60},{40,60},{40,44}}, color={0,0,0})}));
   end Powermeter;
 
   model Voltmeter
+                 "Voltage meter"
 
-    SI.ComplexVoltage Vm;
 
-  extends EnergyCell.Connectors.TwoPins;
+  extends EnergyCell.Connectors.OnePin;
+
+    Modelica.Blocks.Interfaces.RealOutput Output_Voltage
+      annotation (Placement(transformation(extent={{80,22},{158,100}})));
   equation
 
-  p.V - n.V = V;
-  V = Vm;
-
+  I = Complex( 0,0);
      annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
           Rectangle(
             extent={{-62,0},{-84,0}},
@@ -124,24 +128,23 @@ package Measurement
             extent={{-60,0},{-82,0}},
             lineColor={0,0,0},
             lineThickness=0.5),
-          Line(
-            points={{60,0},{82,0}},
-            color={0,0,0},
-            thickness=0.5),
           Text(
             extent={{-14,62},{14,0}},
             lineColor={0,0,0},
-            textString="V")}));
+            textString="V"),
+          Line(points={{80,60},{40,60},{40,44}}, color={0,0,0})}));
   end Voltmeter;
 
   model Amperemeter
-
-    SI.ComplexCurrent Im;
+                   "Current meter"
 
   extends EnergyCell.Connectors.TwoPins;
+
+    Modelica.Blocks.Interfaces.RealOutput Output_Current
+      annotation (Placement(transformation(extent={{80,20},{158,98}})));
   equation
-  p.I + n.I = I;
-  p.I = Im;
+
+  p.V - n.V = V "Ideal current meter has no voltage drop";
 
     annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
           Ellipse(extent={{-60,60},{60,-60}}, lineColor={0,0,0}),
@@ -194,6 +197,7 @@ package Measurement
           Text(
             extent={{-14,62},{14,0}},
             lineColor={0,0,0},
-            textString="I")}));
+            textString="I"),
+          Line(points={{80,60},{40,60},{40,44}}, color={0,0,0})}));
   end Amperemeter;
 end Measurement;
