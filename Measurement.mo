@@ -75,11 +75,9 @@ package Measurement
 
   extends EnergyCell.Connectors.OnePin;
 
-    Modelica.Blocks.Interfaces.RealOutput Output_Voltage
-      annotation (Placement(transformation(extent={{80,22},{158,100}})));
   equation
 
-  I = Complex( 0,0);
+  I = Complex( 0, 0);
      annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
           Rectangle(
             extent={{-62,0},{-84,0}},
@@ -135,16 +133,18 @@ package Measurement
           Line(points={{80,60},{40,60},{40,44}}, color={0,0,0})}));
   end Voltmeter;
 
-  model Amperemeter
-                   "Current meter"
+  model Amperemeter "Current meter"
+
+  SI.Current Imess = y;
 
   extends EnergyCell.Connectors.TwoPins;
 
-    Modelica.Blocks.Interfaces.RealOutput Output_Current
-      annotation (Placement(transformation(extent={{80,20},{158,98}})));
+    Modelica.Blocks.Interfaces.RealOutput y
+      annotation (Placement(transformation(extent={{78,40},{118,80}})));
   equation
 
-  p.V - n.V = V "Ideal current meter has no voltage drop";
+   V = Complex( 0, 0);
+   Imess = abs(I);
 
     annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
           Ellipse(extent={{-60,60},{60,-60}}, lineColor={0,0,0}),

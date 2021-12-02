@@ -17,15 +17,13 @@ package Test_Library
       annotation (Placement(transformation(extent={{40,-16},{74,16}})));
     Loads_over_time.Office office
       annotation (Placement(transformation(extent={{-20,-10},{-40,10}})));
-    Measurement.Voltmeter voltmeter
-      annotation (Placement(transformation(extent={{-2,-10},{18,10}})));
-    Components.Line_Impedance line_Impedance
-      annotation (Placement(transformation(extent={{-26,-50},{-6,-30}})));
+    Measurement.Amperemeter amperemeter
+      annotation (Placement(transformation(extent={{0,-10},{20,10}})));
   equation
-    connect(voltmeter.n, one_Phase.p)
-      annotation (Line(points={{18,0},{40,0}}, color={0,0,0}));
-    connect(voltmeter.p, office.p)
-      annotation (Line(points={{-2,0},{-20,0}}, color={0,0,0}));
+    connect(amperemeter.n, one_Phase.p)
+      annotation (Line(points={{20,0},{40,0}}, color={0,0,0}));
+    connect(amperemeter.p, office.p)
+      annotation (Line(points={{0,0},{-20,0}}, color={0,0,0}));
     annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
           coordinateSystem(preserveAspectRatio=false)),
       experiment(StopTime=34444, __Dymola_Algorithm="Dassl"));

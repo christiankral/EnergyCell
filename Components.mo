@@ -1,4 +1,4 @@
-﻿within EnergyCell;
+within EnergyCell;
 package Components "Building blocks for the energy cell"
   model Impedance "Complex Impedance with one Pin"
     parameter SI.ComplexImpedance Z = Complex( 5, 0) "Assign a parameter for complex Impedance";
@@ -28,8 +28,8 @@ package Components "Building blocks for the energy cell"
   model Line_Impedance "complex Impedance with two Pins"
       parameter SI.Length  l "Leangth of Cable";
       parameter SI.CrossSection A "Cable cross section of the line";
-      final parameter Real roh( quantity="electrical resistance", unit="Ohm*mm²/m") = 0.0178;
-      final parameter SI.Resistance R = (roh*l) / A "";
+      final parameter SI.Resistivity roh = 0.0178;
+      final parameter SI.Resistance R = (roh*l) / A;
       parameter SI.ComplexImpedance Z = Complex( R, 0) "assign a parameter for complex Impedance";
 
 
