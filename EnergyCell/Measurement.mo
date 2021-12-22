@@ -1,11 +1,10 @@
 within EnergyCell;
 package Measurement
-  model Powermeter
+  model Powermeter_
 
   SI.ActivePower Pmess = y;
 
   extends EnergyCell.Connectors.TwoPins;
-
 
     Modelica.Blocks.Interfaces.RealOutput y
       annotation (Placement(transformation(extent={{78,40},{118,80}})));
@@ -65,7 +64,7 @@ package Measurement
             color={0,0,0},
             thickness=0.5),
           Line(points={{80,60},{40,60},{40,44}}, color={0,0,0})}));
-  end Powermeter;
+  end Powermeter_;
 
   model Voltmeter
                  "Voltage meter"
