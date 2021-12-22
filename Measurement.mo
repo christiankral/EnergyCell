@@ -2,16 +2,18 @@ within EnergyCell;
 package Measurement
   model Powermeter
 
-  SI.ActivePower Pmess = y;
+
+     SI.ActivePower Pm;
 
   extends EnergyCell.Connectors.TwoPins;
 
-
-    Modelica.Blocks.Interfaces.RealOutput y
-      annotation (Placement(transformation(extent={{78,40},{118,80}})));
+    Modelica.Blocks.Interfaces.RealOutput Output_Power
+      annotation (Placement(transformation(extent={{80,22},{158,100}})));
   equation
 
-    I = Y * V;
+  S = Complex( P, Q);
+    Pm = P;
+
      annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
           Ellipse(extent={{-62,60},{58,-60}}, lineColor={0,0,0}),
           Text(
@@ -70,19 +72,12 @@ package Measurement
   model Voltmeter
                  "Voltage meter"
 
-  SI.Voltage Vmess = y "Output Voltage on RealOutput y";
 
   extends EnergyCell.Connectors.OnePin;
 
-    Modelica.Blocks.Interfaces.RealOutput y
-      annotation (Placement(transformation(extent={{78,40},{118,80}})));
   equation
 
-  // Ideal voltage measurement no current flow
   I = Complex( 0, 0);
-  Vmess = real(V)
-                 "Real Part of Voltage";
-
      annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
           Rectangle(
             extent={{-62,0},{-84,0}},
@@ -140,7 +135,7 @@ package Measurement
 
   model Amperemeter "Current meter"
 
-  SI.Current Imess = y "Output Voltage on RealOutput y";
+  SI.Current Imess = y;
 
   extends EnergyCell.Connectors.TwoPins;
 
@@ -148,9 +143,8 @@ package Measurement
       annotation (Placement(transformation(extent={{78,40},{118,80}})));
   equation
 
-    // Ideal current measurement no voltage drop
    V = Complex( 0, 0);
-   Imess = abs(I) "Ideal current measurement no voltage drop";
+   Imess = abs(I);
 
     annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
           Ellipse(extent={{-60,60},{60,-60}}, lineColor={0,0,0}),

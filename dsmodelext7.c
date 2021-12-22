@@ -208,8 +208,7 @@ DeclareVariable("office.table.nextTimeEvent", "Next time event instant [s]", 0, 
 DeclareVariable("office.table.nextTimeEventScaled", "Next scaled time event instant [1]",\
  0, 0.0,0.0,0.0,0,2704)
 DeclareVariable("office.table.timeScaled", "Scaled time [1]", 0.0, 0.0,0.0,0.0,0,2560)
-DeclareVariable("amperemeter.Imess", "Output Voltage on RealOutput y [A]", 0.0, \
-0.0,0.0,0.0,0,512)
+DeclareVariable("amperemeter.Imess", "[A]", 0.0, 0.0,0.0,0.0,0,512)
 DeclareVariable("amperemeter.V.re", "Imaginary part of complex voltage [V]", 0.0,\
  0.0,0.0,0.0,0,513)
 DeclareVariable("amperemeter.V.im", "Real part of complex voltage [V]", 0.0, \
@@ -242,73 +241,6 @@ DeclareAlias2("amperemeter.n.I.re", "Real part of complex current [A]", \
 "one_Phase.I.re", -1, 5, 0, 128)
 DeclareAlias2("amperemeter.n.I.im", "Imaginary part of complex current [A]", \
 "one_Phase.I.im", -1, 5, 1, 128)
-DeclareAlias2("amperemeter.y", "[A]", "amperemeter.Imess", 1, 5, 30, 0)
-DeclareAlias2("voltmeter.Vmess", "Output Voltage on RealOutput y [V]", \
-"office.V.re", 1, 5, 7, 0)
-DeclareAlias2("voltmeter.V.re", "Imaginary part of complex voltage [V]", \
-"office.V.re", 1, 5, 7, 0)
-DeclareAlias2("voltmeter.V.im", "Real part of complex voltage [V]", \
-"office.V.im", 1, 5, 8, 0)
-DeclareVariable("voltmeter.I.re", "Real part of complex current [A]", 0.0, \
-0.0,0.0,0.0,0,513)
-DeclareVariable("voltmeter.I.im", "Imaginary part of complex current [A]", 0.0, \
-0.0,0.0,0.0,0,513)
-DeclareVariable("voltmeter.P", "Active power [W]", 0.0, 0.0,0.0,0.0,0,513)
-DeclareVariable("voltmeter.S.re", "Real part of complex apparent power (active power) [W]",\
- 0.0, 0.0,0.0,0.0,0,513)
-DeclareVariable("voltmeter.S.im", "Imaginary part of complex apparent power (reactive power) [var]",\
- 0.0, 0.0,0.0,0.0,0,513)
-DeclareVariable("voltmeter.Q", "Reactive power [var]", 0.0, 0.0,0.0,0.0,0,513)
-DeclareAlias2("voltmeter.p.V.re", "Imaginary part of complex electric potential [V]",\
- "office.V.re", 1, 5, 7, 0)
-DeclareAlias2("voltmeter.p.V.im", "Real part of complex electric potential [V]",\
- "office.V.im", 1, 5, 8, 0)
-DeclareVariable("voltmeter.p.I.re", "Real part of complex current [A]", 0.0, \
-0.0,0.0,0.0,0,769)
-DeclareVariable("voltmeter.p.I.im", "Imaginary part of complex current [A]", 0.0,\
- 0.0,0.0,0.0,0,769)
-DeclareAlias2("voltmeter.y", "[V]", "office.V.re", 1, 5, 7, 0)
-DeclareParameter("line_Impedance.l", "Leangth of Cable [m]", 70088, 100, \
-0.0,0.0,0.0,0,560)
-DeclareParameter("line_Impedance.A", "Cable cross section of the line [m2]", 70089,\
- 0.0001, 0.0,0.0,0.0,0,560)
-DeclareVariable("line_Impedance.roh", "[Ohm.m]", 0.0178, 0.0,0.0,0.0,0,513)
-DeclareVariable("line_Impedance.R", "[Ohm]", 0.0, 0.0,0.0,0.0,0,513)
-DeclareVariable("line_Impedance.Z.re", "Real part of complex impedance (resistance) [Ohm]",\
- 0.0, 0.0,0.0,0.0,0,513)
-DeclareVariable("line_Impedance.Z.im", "Imaginary part of complex impedance (reactance) [Ohm]",\
- 0.0, 0.0,0.0,0.0,0,513)
-DeclareVariable("line_Impedance.V.re", "Imaginary part of complex voltage [V]", \
-0.0, 0.0,0.0,0.0,0,512)
-DeclareVariable("line_Impedance.V.im", "Real part of complex voltage [V]", 0.0, \
-0.0,0.0,0.0,0,512)
-DeclareAlias2("line_Impedance.I.re", "Real part of complex current [A]", \
-"one_Phase.I.re", 1, 5, 0, 0)
-DeclareAlias2("line_Impedance.I.im", "Imaginary part of complex current [A]", \
-"one_Phase.I.im", 1, 5, 1, 0)
-DeclareVariable("line_Impedance.P", "Deposit active Power for TwoPins Connector [W]",\
- 0.0, 0.0,0.0,0.0,0,512)
-DeclareAlias2("line_Impedance.S.re", "Real part of complex apparent power (active power) [W]",\
- "line_Impedance.P", 1, 5, 51, 0)
-DeclareVariable("line_Impedance.S.im", "Imaginary part of complex apparent power (reactive power) [var]",\
- 0.0, 0.0,0.0,0.0,0,512)
-DeclareAlias2("line_Impedance.Q", "Deposit reactive Power for TwoPins Connector [var]",\
- "line_Impedance.S.im", 1, 5, 52, 0)
-DeclareAlias2("line_Impedance.p.V.re", "Imaginary part of complex electric potential [V]",\
- "office.V.re", 1, 5, 7, 0)
-DeclareAlias2("line_Impedance.p.V.im", "Real part of complex electric potential [V]",\
- "office.V.im", 1, 5, 8, 0)
-DeclareAlias2("line_Impedance.p.I.re", "Real part of complex current [A]", \
-"one_Phase.I.re", 1, 5, 0, 128)
-DeclareAlias2("line_Impedance.p.I.im", "Imaginary part of complex current [A]", \
-"one_Phase.I.im", 1, 5, 1, 128)
-DeclareAlias2("line_Impedance.n.V.re", "Imaginary part of complex electric potential [V]",\
- "one_Phase.V_ref.re", 1, 7, 0, 0)
-DeclareAlias2("line_Impedance.n.V.im", "Real part of complex electric potential [V]",\
- "one_Phase.V_ref.im", 1, 7, 1, 0)
-DeclareAlias2("line_Impedance.n.I.re", "Real part of complex current [A]", \
-"one_Phase.I.re", -1, 5, 0, 128)
-DeclareAlias2("line_Impedance.n.I.im", "Imaginary part of complex current [A]", \
-"one_Phase.I.im", -1, 5, 1, 128)
+DeclareAlias2("amperemeter.y", "[A]", "amperemeter.Imess", 1, 5, 28, 0)
 EndNonAlias(35)
 PreNonAliasNew(36)
