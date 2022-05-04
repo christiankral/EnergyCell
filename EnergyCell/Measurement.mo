@@ -1,8 +1,8 @@
 within EnergyCell;
 package Measurement
-  model Powermeter_
+  model Powermeter "Power Meter"
 
-  SI.ActivePower Pmess = y;
+  SI.ActivePower Pmess = y "Output Power on RealOutput y";
 
   extends EnergyCell.Connectors.TwoPins;
 
@@ -64,7 +64,7 @@ package Measurement
             color={0,0,0},
             thickness=0.5),
           Line(points={{80,60},{40,60},{40,44}}, color={0,0,0})}));
-  end Powermeter_;
+  end Powermeter;
 
   model Voltmeter
                  "Voltage meter"
