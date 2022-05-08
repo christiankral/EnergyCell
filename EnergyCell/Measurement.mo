@@ -2,15 +2,16 @@ within EnergyCell;
 package Measurement
   model Powermeter "Power Meter"
 
-  SI.ActivePower Pmess = y "Output Power on RealOutput y";
+  SI.Power Pmess;
 
   extends EnergyCell.Connectors.TwoPins;
+
 
     Modelica.Blocks.Interfaces.RealOutput y
       annotation (Placement(transformation(extent={{78,40},{118,80}})));
   equation
 
-    I = Y * V;
+  Pmess = realactivePower((p.V), I);
      annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
           Ellipse(extent={{-62,60},{58,-60}}, lineColor={0,0,0}),
           Text(

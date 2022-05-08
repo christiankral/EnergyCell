@@ -3,18 +3,24 @@ package Test_Library
   model Voltage_and_Source
     extends Modelica.Icons.Example;
     Voltage_source.One_Phase one_Phase
-      annotation (Placement(transformation(extent={{54,-10},{74,10}})));
-    Source_over_time.PV_Berndorf pV_Berndorf
+      annotation (Placement(transformation(extent={{88,-10},{108,10}})));
+    Source_over_time.PV_Berndorf pV_Berndorf(k=1)
       annotation (Placement(transformation(extent={{-26,-10},{-48,10}})));
-    Loads_over_time.Bakery bakery
+    Loads_over_time.Bakery bakery(k=1)
       annotation (Placement(transformation(extent={{-26,-38},{-46,-18}})));
-    Battery.Energy_Meter energy_Meter
-      annotation (Placement(transformation(extent={{4,-30},{24,-10}})));
+    Components.Line_Impedance line_Impedance(l=150, A=10)
+      annotation (Placement(transformation(extent={{6,-10},{26,10}})));
+    Measurement.Powermeter powermeter
+      annotation (Placement(transformation(extent={{66,-10},{46,10}})));
   equation
-    connect(pV_Berndorf.p, one_Phase.p)
-      annotation (Line(points={{-26,0},{54,0}}, color={0,0,0}));
-    connect(bakery.p, one_Phase.p) annotation (Line(points={{-26,-28},{-8,-28},
-            {-8,0},{54,0}}, color={0,0,0}));
+    connect(pV_Berndorf.p, line_Impedance.p)
+      annotation (Line(points={{-26,0},{6,0}}, color={0,0,0}));
+    connect(bakery.p, line_Impedance.p) annotation (Line(points={{-26,-28},{-10,
+            -28},{-10,0},{6,0}}, color={0,0,0}));
+    connect(powermeter.p, one_Phase.p)
+      annotation (Line(points={{66,0},{88,0}}, color={0,0,0}));
+    connect(powermeter.n, line_Impedance.n)
+      annotation (Line(points={{46,0},{26,0}}, color={0,0,0}));
     annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
           coordinateSystem(preserveAspectRatio=false)));
   end Voltage_and_Source;
