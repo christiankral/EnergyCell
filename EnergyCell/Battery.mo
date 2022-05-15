@@ -4,9 +4,11 @@ package Battery
   model Batterypack
     extends EnergyCell.Connectors.OnePin;
 
-    SI.Power Speicherstandladen;
-    SI.Power Speicherstandentladen;
-    SI.Power Ladung;
+    Real Speicherstandladen;
+    Real Speicherstandentladen;
+    Real Ladung;
+    Real Strom;
+    Real Energiemenge;
 
     //parameter Real s_0 = 0;
     //parameter Real s_max = 10;
@@ -21,13 +23,15 @@ package Battery
           rotation=270)));
   equation
     S=V*I;
+    v=real( V)*Strom;
+    Energiemenge = real(V) * Strom *3600;
 
-    when {v < 0, v > 0} then
-     if v > 0 then
+    when v < 0 or v > 0 then
+     if v < 0 then
        Speicherstandladen = 0;
-       Speicherstandentladen = v;
+       Speicherstandentladen = Energiemenge;
      else
-       Speicherstandladen = v;
+       Speicherstandladen = Energiemenge;
        Speicherstandentladen = 0;
      end if;
 
