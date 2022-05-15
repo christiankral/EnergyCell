@@ -2,16 +2,19 @@ within EnergyCell;
 package Measurement
   model Powermeter "Power Meter"
 
-  SI.Power Pmess;
+  SI.ComplexPower Pmess;
+  SI.Power Pout = y;
+
 
   extends EnergyCell.Connectors.TwoPins;
 
 
     Modelica.Blocks.Interfaces.RealOutput y
-      annotation (Placement(transformation(extent={{78,40},{118,80}})));
+      annotation (Placement(transformation(extent={{58,44},{98,84}})));
   equation
-
-  Pmess = realactivePower((p.V), I);
+  S = Complex( 0, 0);
+  Pmess = p.V * p.I;
+  Pout = real(Pmess);
      annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
           Ellipse(extent={{-62,60},{58,-60}}, lineColor={0,0,0}),
           Text(
@@ -63,8 +66,8 @@ package Measurement
           Line(
             points={{60,0},{82,0}},
             color={0,0,0},
-            thickness=0.5),
-          Line(points={{80,60},{40,60},{40,44}}, color={0,0,0})}));
+            thickness=0.5)}),
+      experiment(StopTime=31536000, __Dymola_Algorithm="Dassl"));
   end Powermeter;
 
   model Voltmeter

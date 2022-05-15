@@ -31,6 +31,7 @@ package Connectors "pins for the Energycell"
     SI.ActivePower P "Deposit active Power for TwoPins Connector";
     SI.ComplexPower S "Deposit apparent Power for TwoPins Connector";
     SI.ReactivePower Q "Deposit reactive Power for TwoPins Connector";
+
     Positive_Pin p
       annotation (Placement(transformation(extent={{-124,-24},{-76,24}}),
           iconTransformation(extent={{-124,-24},{-76,24}})));
@@ -43,7 +44,7 @@ package Connectors "pins for the Energycell"
    S = Complex( P, Q) "Describe the apparent power by active Power and reactive Power";
    S = 3 * V * conj( I) "Definition of apparent Power consisting of complex Voltage and complex Current";
    p.I = I "Definition of complex Current";
-   annotation (Icon(coordinateSystem(preserveAspectRatio=false)),
+     annotation (Icon(coordinateSystem(preserveAspectRatio=false)),
                                               Diagram(coordinateSystem(
             preserveAspectRatio=false)));
   end TwoPins;
