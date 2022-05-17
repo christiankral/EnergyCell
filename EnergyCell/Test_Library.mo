@@ -114,25 +114,25 @@ package Test_Library
     extends Modelica.Icons.Example;
     Voltage_source.One_Phase one_Phase
       annotation (Placement(transformation(extent={{88,-10},{108,10}})));
-    Source_over_time.PV_Berndorf pV_Berndorf(k=1)
+    Source_over_time.PV_Berndorf pV_Berndorf(k=8)
       annotation (Placement(transformation(extent={{-26,-10},{-48,10}})));
-    Loads_over_time.Bakery bakery(k=1)
+    Loads_over_time.Bakery bakery(k=10)
       annotation (Placement(transformation(extent={{-26,-38},{-46,-18}})));
     Measurement.Powermeter powermeter
-      annotation (Placement(transformation(extent={{66,-10},{46,10}})));
-    EnergyCell.Battery.Batterypack batterypack
-      annotation (Placement(transformation(extent={{10,-52},{30,-32}})));
+      annotation (Placement(transformation(extent={{2,-10},{22,10}})));
+    EnergyCell.Battery.Batterypack batterypack(Akkugroesse=6)
+      annotation (Placement(transformation(extent={{26,-54},{46,-34}})));
   equation
-    connect(powermeter.p, one_Phase.p)
-      annotation (Line(points={{66,0},{88,0}}, color={0,0,0}));
-    connect(batterypack.v, powermeter.y) annotation (Line(points={{20,-32},{20,
-            -14},{36,-14},{36,6.4},{48.2,6.4}}, color={0,0,127}));
-    connect(pV_Berndorf.p, powermeter.n)
-      annotation (Line(points={{-26,0},{46,0}}, color={0,0,0}));
-    connect(bakery.p, powermeter.n) annotation (Line(points={{-26,-28},{-8,-28},
-            {-8,0},{46,0}}, color={0,0,0}));
-    connect(batterypack.p, powermeter.n) annotation (Line(points={{10,-42},{2,
-            -42},{2,-28},{-8,-28},{-8,0},{46,0}}, color={0,0,0}));
+    connect(batterypack.v, powermeter.y) annotation (Line(points={{36,-34},{36,
+            6.4},{19.8,6.4}},                   color={0,0,127}));
+    connect(powermeter.n, one_Phase.p)
+      annotation (Line(points={{22,0},{88,0}}, color={0,0,0}));
+    connect(powermeter.p, pV_Berndorf.p)
+      annotation (Line(points={{2,0},{-26,0}},  color={0,0,0}));
+    connect(bakery.p, pV_Berndorf.p) annotation (Line(points={{-26,-28},{-14,
+            -28},{-14,0},{-26,0}}, color={0,0,0}));
+    connect(batterypack.p, one_Phase.p) annotation (Line(points={{26,-44},{42,
+            -44},{42,0},{88,0}}, color={0,0,0}));
     annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
           coordinateSystem(preserveAspectRatio=false)),
       experiment(

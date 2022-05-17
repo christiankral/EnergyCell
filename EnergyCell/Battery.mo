@@ -7,11 +7,15 @@ package Battery
     Real Speicherstandladen;
     Real Speicherstandentladen;
     Real Ladung;
+    Real Ladestand;
+    Real Ladung_Tatsaechlich;
     Real Strom;
     Real Energiemenge;
+    Real e_max;
+    parameter Real e_min = 0;
+    parameter Real Akkugroesse;
 
-    //parameter Real s_0 = 0;
-    //parameter Real s_max = 10;
+
 
 
 
@@ -24,19 +28,37 @@ package Battery
   equation
     S=V*I;
     v=real( V)*Strom;
-    Energiemenge = real(V) * Strom *3600;
+    Energiemenge = real(V) * Strom *3600;// J
+    e_max = 3.6e+6 * Akkugroesse;// J
 
-    when v < 0 or v > 0 then
-     if v < 0 then
-       Speicherstandladen = 0;
-       Speicherstandentladen = Energiemenge;
-     else
+    when sample(0,100) then
+     if v > 0 then
        Speicherstandladen = Energiemenge;
        Speicherstandentladen = 0;
+     else
+       Speicherstandladen = 0;
+       Speicherstandentladen = Energiemenge;
      end if;
 
-     Ladung = pre(Ladung) + Speicherstandladen + Speicherstandentladen;
+     Ladung = Speicherstandladen + Speicherstandentladen;//J
 
+     if Ladung > 0 then
+       if pre(Ladestand) + Ladung <= e_max then
+         Ladestand = pre(Ladestand) + Ladung;
+         Ladung_Tatsaechlich = Ladung;
+       else
+         Ladestand = e_max;
+         Ladung_Tatsaechlich = e_max - pre(Ladestand);
+       end if;
+     else
+       if pre(Ladestand) + Ladung >= e_min then
+         Ladestand = pre(Ladestand) + Ladung;
+         Ladung_Tatsaechlich = Ladung;
+       else
+         Ladestand = e_min;
+         Ladung_Tatsaechlich = pre(Ladestand);
+       end if;
+     end if;
     end when;
 
                                                         annotation (
