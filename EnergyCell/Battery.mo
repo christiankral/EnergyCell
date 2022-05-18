@@ -14,6 +14,11 @@ package Battery
     Real e_max;
     parameter Real e_min = 0;
     parameter Real Akkugroesse;
+    SI.ActivePower P_ref = Ladung_Tatsaechlich "Adopting the values from table for active Power";
+    SI.ComplexAdmittance Y = Complex(G, 0) "Definition of admittance ";
+    SI.Conductance G = P_ref / V_ref^2 "Definition of Conductance";
+    parameter SI.Voltage V_ref = 230 "Parameters for the voltage";
+
 
 
 
@@ -26,7 +31,7 @@ package Battery
           extent={{-20,-20},{20,20}},
           rotation=270)));
   equation
-    S=V*I;
+     I = Y * V;
     v=real( V)*Strom;
     Energiemenge = real(V) * Strom *3600;// J
     e_max = 3.6e+6 * Akkugroesse;// J
